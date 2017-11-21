@@ -12,8 +12,8 @@ class User(db.Model):
 
 
 #职位表
-class Position(db.Model):
-    __tablename__ = 'position'
+class Job(db.Model):
+    __tablename__ = 'job'
 
     id = db.Column(db.Integer, primary_key=True)
 
