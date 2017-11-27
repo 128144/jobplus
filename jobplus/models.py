@@ -116,8 +116,8 @@ class EduExperience(Experience):
     resume = db.relationship('Resume', uselist=False)
 
 
-class ProjectExperice(Experience):
-    __tablename__ = 'preject_experience'
+class ProjectExperience(Experience):
+    __tablename__ = 'prejoct_experience'
 
     name = db.Column(db.String(32), nullable=False)
     # 在项目中扮演的角色

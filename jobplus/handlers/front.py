@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash
+from flask import Blueprint, render_template, flash, redirect, url_for
 from jobplus.forms import LoginForm
 from jobplus.models import db, User
 from flask_login import login_user, logout_user, login_required
@@ -18,11 +18,11 @@ def login():
         if user.is_admin:
             return redirect(url_for('#'))
         elif user.is_company:
-            return redirect(url_for('#'))
-        elif user.role == 10:
-            return redirect(url_for('#'))
+            return redirect(url_for('company.profile'))
         else:
-            flash("账号或密码错误", "warning")
+            return redirect(url_for('user.profile'))
+        
+    flash("账号或密码错误", "warning")
     return render_template('login.html', form=form)
 
 @front.route('/logout') 
