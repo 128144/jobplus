@@ -4,10 +4,11 @@
 
 {% block title %} Login {% endblock %} 
 {% block body %}
-
+<div class="form">
 
 <h2>登录</h2>
 {{ render_form(form, url_for("front.login")) }}
+</div>
 {% endblock %}
 
 
