@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% block title%}
+Company
+{% endblock%}
+
+{% block body %}
+<h1 class="h4 mt30 nav-title">企业列表</h1>
+<div class="company-list">
+
+<div class="row" style="margin-right: 0;">
+{% for i in range(10) %}
+<div class="media">
+<div class="col-md-9">
+<div class="pull-left">
+<div class="img-warp">
+<a href="https://segmentfault.com/companies/o/puoke" class="company-logo" style="background-image: url('https://sfault-logo.b0.upaiyun.com/325/693/3256935508-5747f3a1190f3_small100')"></a>
+</div>
+</div>
+<div class="media-body" style="padding-left: 12px;">
+<h4 class="media-heading" id="media-heading">
+<a href="/o/puoke" >扑克财经</a>
+<a class="anchorjs-link"href="#media-heading"><span class="anchorjs-icon"></span></a></h4>
+<a class="company-site" target="_blank" rel="nofollow" href="http://www.puoke.com">puoke.com</a>
+<p class="company-desc">我们是一家互联网公司，致力于提高大宗企业/金融机构的商业投资效率</p>
+
+</div>
+</div>
+<div class="col-md-3">
+<ul class="company-list-single-info" >
+<li class="text-muted">
+<i class="fa fa-user"></i>
+<a class="company-list-single-info-num" target="_blank" href="/o/puoke/jobs"><span>2</span></a> <span>个在招职位</span>
+</li>
+<li class="text-muted ">
+<i class="fa fa-globe"></i>
+<span>上海</span>
+</li>
+</ul>
+</div>
+</div>
+{% endfor %}
+</div>  
+{% endblock %}

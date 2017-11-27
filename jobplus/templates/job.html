@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block title%}
+Job
+{% endblock%}
+
+{% block body %}
+<div class="job list">
+ <h2 class="h4 mt40 job-list-title">最新职位 </h2>
+    <div class="row">
+      {% for i in range(10) %}
+       <div class="col-md-6 job-list-item-block">
+          <a href="#" class="job-name">Node.js 工程师</a>
+          <span class="text-muted job-list-item-block-city"> [南京]</span>
+          <div class="text-muted job-require">
+            <strong class="text-green">15k-35k</strong>
+              / 经验3-5年 / 本科及以上 /全职
+           </div>
+           <p class="text-muted job-list-item-block-company-info">
+              <a  href="#">AirDwing</a> · 5 小时前</p>
+         </div>
+        {% endfor %}
+    </div>
+  </div>
+{% endblock %}
