@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, ValidationError, FloatField
-from wtforms.validators import Length, Email, EqualTo, Required
-from jobplus.models import db, User
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, ValidationError, FloatField, TextAreaField
+from wtforms.validators import Length, Email, EqualTo, Required, URL
+from jobplus.models import db, User, Company
 from flask import flash
 
 class LoginForm(FlaskForm):
@@ -21,23 +21,36 @@ class LoginForm(FlaskForm):
 
 
 class UserprofileForm(FlaskForm):
-    name = StringField('姓名', validators=[Required(), Length(6,24)])
+    name = StringField('姓名', validators=[Required()])
     email = StringField('邮箱', validators=[Required(), Email()])
     password = PasswordField('密码', validators=[Required(), Length(6,24)])
-    tel = StringField('手机号', validators=[Required(), Length(6,24)])
-    working_life = FloatField('工作年限', validators=[Required(), Length(6,24)])
-    
+    tel = StringField('手机号', validators=[Required(), Length(11)])
+    working_life = FloatField('工作年限', validators=[Required()])
+    upload_resume_url = StringField('简历链接', validators=[Required(), URL])
     submit = SubmitField('提交')
+
+    def update_userprofile(self, userprofile):
+        self.populate_obj(userprofile)
+        db.session.add(userprofile)
+        db.session.commit()
+        
+        return userprofile
 
 
 class CompanyprofileForm(FlaskForm):
-    name = StringField('企业名称', validators=[Required(), Length(6,24)])
+    name = StringField('企业名称', validators=[Required()])
     email = StringField('邮箱', validators=[Required(), Email()])
     password = PasswordField('密码', validators=[Required(), Length(6,24)])
-    logo = StringField('logo图片链接', validators=[Required(), Length(6,100)])
-    site = StringField('网站链接', validators=[Required(), Length(6,100)])
+    logo = StringField('logo图片链接', validators=[Required(), URL])
+    site = StringField('网站链接', validators=[Required(), URL])
     description = StringField('一句话简介', validators=[Required(), Length(6,24)])
-    about = StringField('详细介绍', validators=[Required(), Length(6,1024)])
-
-    
+    about = TextAreaField('详细介绍', validators=[Required()])
     submit = SubmitField('提交')
+
+    def create_companyprofile(self): 
+        company = Company()
+        self.populate_obj(company)
+        db.session.add(company)
+        db.session.commit()
+        
+        return company
