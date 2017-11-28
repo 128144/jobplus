@@ -40,7 +40,7 @@
     {% if messages %} 
        {% for category, message in messages %}
          <div class="alert alert-{{ category }} alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            {{ message }}
          </div>
        {% endfor %}
@@ -48,8 +48,8 @@
   {% endwith %}  
 
   {% block body %}{% endblock %}
-  {% block footer %}{% endblock %}
 </div>
+  {% block footer %}{% endblock %}
       <!-- Bootstrap ?? jQuery -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="http://labfile.oss.aliyuncs.com/courses/923/week7/code/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
