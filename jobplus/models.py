@@ -38,10 +38,10 @@ class User(Base, UserMixin):
     email = db.Column(db.String(64), unique=True, index=True, nullable=False)
     _password = db.Column('password', db.String(256), nullable=False)
     role = db.Column(db.SmallInteger, default=ROLE_USER)
-    tel = db.Column(db.String(16), nullable=False)
+    tel = db.Column(db.String(16), nullable=True)
     #工作年限
-    working_life = db.Column(db.Float(16), nullable=False)
-    resume = db.relationship('Resume', uselist=False)
+    working_life = db.Column(db.Float(16), nullable=True)
+    resume = db.relationship('Resume', uselist=True)
     collect_jobs = db.relationship('Job', secondary=user_job)
     upload_resume_url = db.Column(db.String(64))
 
