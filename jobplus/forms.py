@@ -14,6 +14,7 @@ class CompanyregisterForm(FlaskForm):
     
     def create_user(self):
         user = User()
+        user.role = 20
         user.username = self.companyname.data
         user.email = self.email.data
         user.password=self.password.data
